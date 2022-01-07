@@ -433,3 +433,21 @@ const validWord = function (dictionary, word) {
 
 console.log(validWord(dictionary, s1)); //true
 console.log(validWord(dictionary, s2)); //false
+
+//-------------------
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function generateHashtag(str) {
+  const result = `${str.split(" ").map(capitalize).join("")}`;
+  return result.length >= 140 || result === "" ? false : `#${result}`;
+}
+
+console.log(generateHashtag("hola como les va a todes"));
+console.log(
+  generateHashtag(
+    "hola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todes"
+  )
+);
