@@ -313,3 +313,74 @@ function findOutlierTwo(integers) {
 
 console.log(findOutlierTwo([2, 4, 0, 100, 4, 11, 2602, 36])); //11
 console.log(findOutlierTwo([160, 3, 1719, 19, 11, 13, -21])); //160
+
+//-------------------
+
+function findUbiq(arr) {
+  return arr.find((numero) => arr.indexOf(numero) === arr.lastIndexOf(numero));
+}
+
+console.log(findUbiq([0, 1, 0])); //1
+console.log(findUbiq([1, 1, 1, 2, 1, 1])); //2
+console.log(findUbiq([3, 10, 3, 3, 3, 3, , 3])); //10
+
+//-------------------
+
+function deleteNth(arr, n) {
+  const repeat = {};
+  const result = arr.filter((num) => {
+    repeat[num] = (repeat[num] || 0) + 1;
+    const repetNums = repeat[num];
+
+    return repetNums <= n;
+  });
+  return result;
+}
+
+console.log(deleteNth([1, 1, 1, 1, 1], 2));
+console.log(deleteNth([1, 1, 3, 3, 7, 2, 2, 2, 2], 2));
+console.log(deleteNth([20, 37, 20, 21], 1));
+
+//------------------- with for
+
+function countSheeps(arrayOfSheep) {
+  let counter = 0;
+  for (let i = 0; i < arrayOfSheep.length; i++) {
+    if (arrayOfSheep[i] === true) {
+      counter++;
+    }
+  }
+  return counter;
+}
+
+console.log(countSheeps([true, false, true, true, true, true, false, false]));
+
+//------------------- using filter
+
+function countSheepsTwo(arrayOfSheep) {
+  return arrayOfSheep.filter((sheepStatus) => sheepStatus === true).length;
+}
+
+console.log(
+  countSheepsTwo([true, false, true, true, true, true, false, false])
+);
+
+//------------------- using reduce
+
+function countSheepsThree(arrayOfSheep) {
+  return arrayOfSheep.reduce((acum, sheep) => acum + Number(!!sheep), 0);
+}
+
+console.log(
+  countSheepsThree([true, false, true, true, true, true, false, false])
+);
+
+//------------------- solution with regex
+
+function replaceDots(str) {
+  return str.replace(/\./g, "-");
+}
+
+console.log(replaceDots("one.two.three.four.five"));
+
+//-------------------
