@@ -384,3 +384,52 @@ function replaceDots(str) {
 console.log(replaceDots("one.two.three.four.five"));
 
 //-------------------
+
+function filterLongWords(sentence, n) {
+  return sentence.split(" ").filter((word) => word.length >= n);
+}
+
+console.log(
+  filterLongWords(
+    "first element in the array will be used as the initial accumulator value",
+    8
+  )
+);
+
+//-------------------
+
+function countSalutes(hallway) {
+  let goingRight = 0;
+  let salutes = 0;
+
+  for (let i = 0; i < hallway.length; i++) {
+    const hallwayPosition = hallway[i];
+    if (hallwayPosition === ">") {
+      goingRight++;
+    }
+    if (hallwayPosition === "<") {
+      salutes = salutes + goingRight * 2;
+    }
+  }
+  return salutes;
+}
+
+console.log(countSalutes("<------<----->------<")); //2
+console.log(countSalutes("<<>><<>>")); //8
+
+//-------------------
+
+const dictionary = ["code", "wars"];
+const s1 = "codewars";
+const s2 = "codewar";
+
+const validWord = function (dictionary, word) {
+  dictionary.forEach((w) => {
+    const regex = new RegExp(w, "ig");
+    word = word.replace(regex, "");
+  });
+  return word === "";
+};
+
+console.log(validWord(dictionary, s1)); //true
+console.log(validWord(dictionary, s2)); //false
