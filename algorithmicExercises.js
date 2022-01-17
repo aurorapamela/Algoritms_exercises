@@ -451,3 +451,41 @@ console.log(
     "hola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todeshola como les va a todes"
   )
 );
+
+let twoSum = function (nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+};
+
+console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
+console.log(twoSum([3, 2, 4], 6)); // [1, 2]
+console.log(twoSum([3, 2, 4], 7)); // [0, 2]
+console.log(twoSum([3, 3], 6)); // [0, 1]
+console.log(twoSum([3, 4, 18, 2], 20)); // [2, 3]
+
+// Time Complexity: O(n^2)
+
+let twoSumOther = function (nums, target) {
+  const indices = {};
+  nums.forEach((item, index) => {
+    indices[item] = index;
+  }); // la primera vuelta es { '3': 0, '2': 1, '4': 2 }
+  console.log(indices);
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i]; // 7 - 3 => la primera vuelta es 4
+    if (indices[complement] !== undefined && indices[complement] !== i) {
+      return [i, indices[complement]];
+    }
+  }
+};
+
+// console.log(twoSumOther([2, 7, 11, 15], 9)); // [0, 1]
+// console.log(twoSumOther([3, 2, 4], 6)); // [1, 2]
+console.log(twoSumOther([3, 2, 4], 7)); // [0, 2]
+// console.log(twoSumOther([3, 3], 6)); // [0, 1]
+// console.log(twoSumOther([3, 4, 18, 2], 20)); // [2, 3]
