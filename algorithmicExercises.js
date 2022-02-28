@@ -183,6 +183,7 @@ console.log(numberToPower(2, 3)); // 8
 console.log(numberToPower(10, 6)); //1.000.000
 
 //-------------------
+
 Array.prototype.filter = function (func) {
   console.log(func, this);
   let filtered = [];
@@ -452,6 +453,8 @@ console.log(
   )
 );
 
+//-------------------
+
 let twoSum = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     for (let j = i + 1; j < nums.length; j++) {
@@ -489,3 +492,107 @@ let twoSumOther = function (nums, target) {
 console.log(twoSumOther([3, 2, 4], 7)); // [0, 2]
 // console.log(twoSumOther([3, 3], 6)); // [0, 1]
 // console.log(twoSumOther([3, 4, 18, 2], 20)); // [2, 3]
+
+//-------------------
+
+let isPalindrome = function (x) {
+  const reverse = Number(x.toString().split("").reverse().join(""));
+  return x === reverse;
+};
+
+console.log(isPalindrome(121));
+console.log(isPalindrome(122));
+console.log(isPalindrome(13331));
+console.log(isPalindrome(133637231));
+
+//-------------------
+
+let romanToInt = function (roman) {
+  const sym = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+
+  let result = 0;
+
+  for (i = 0; i < roman.length; i++) {
+    const cur = sym[roman[i]];
+    const next = sym[roman[i + 1]];
+
+    if (cur < next) {
+      result += next - cur; // IV -> 5 - 1 = 4
+      i++;
+    } else {
+      result += cur;
+    }
+  }
+
+  return result;
+};
+
+console.log(romanToInt("III"));
+console.log(romanToInt("II"));
+console.log(romanToInt("IV"));
+console.log(romanToInt("CM"));
+console.log(romanToInt("CC"));
+
+//-------------------
+
+// let i;
+let fib = []; // Initialize array!
+
+fib[0] = 0;
+fib[1] = 1;
+
+for (let i = 2; i <= 10; i++) {
+  // Next fibonacci number = previous + one before previous
+  // Translated to JavaScript:
+  fib[i] = fib[i - 2] + fib[i - 1];
+  // console.log(fib[i]);
+}
+
+console.log(fib);
+
+//---------------------
+
+const pame = [
+  {
+    nombre: "pippen",
+    apellido: "aurora",
+    edad: 11,
+  },
+  { nombre: "ariel", apellido: "baiz", edad: 39 },
+  { nombre: "pamela", apellido: "aurora", edad: 35 },
+];
+
+const newper = { nombre: "otro perrito", apellido: "baiz", edad: 5 };
+
+const newest = [...pame, newper];
+
+const hola = ["pame", "hola", "aurora"];
+
+const holaDos = ["helou", ...hola];
+
+console.log(newest);
+console.log(holaDos);
+
+//---------------------
+
+const calcularAnios = (fecha) => {
+  let hoyMenosFEcha = new Date().getTime() - fecha.getTime(),
+    aniosEnMS = 1000;
+};
+
+//---------------------
+
+const exampleArray = [9, 4, 3, 4, 5, 6, 9, 9, 9];
+
+const withoutDuplicates = [...new Set(exampleArray)];
+console.log(withoutDuplicates);
+
+//---------------------
